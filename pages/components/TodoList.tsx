@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "../../styles/list.module.css";
 import TodoItem from '../components/Todo'
-import {Todo} from '../taskModel'
+import {Todo} from '../../lib/taskModel'
 
 
 interface Props {
-  todos: Array<Todo>;
-  setTodos: React.Dispatch<React.SetStateAction<string>>;
+  todos: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
 const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
@@ -14,10 +14,10 @@ const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
     <div className={styles.container}>
 
 
-        {todos.map((t) => (
+        {todos.map((todo) => (
                 <TodoItem
-                todo={t}
-                key={t.id}
+                todo={todo}
+                key={todo.id}
                 todos={todos}
                 setTodos={setTodos}
                 />

@@ -4,20 +4,21 @@ import Head from 'next/head'
 // import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import InputField from './components/InputField'
-import {Todo} from './taskModel';
+import {Todo} from '../lib/taskModel';
 import TodoList from './components/TodoList';
 
 
 const Home: NextPage = () => {
-const [todo, setTodo] = useState<string>("")
-const [todos, setTodos] = useState<Todo[]>([])
+const [todo, setTodo] = useState<string>("");
+const [todos, setTodos] = useState<Array<Todo>>([]);
 
 const handleNewTask = (e: React.FormEvent) => {
 e.preventDefault();
-const d = new Date();
-console.log(d)
+
+
 if(todo) {
-  setTodos([...todos,{id:Date.now(), todo, isDone:false, date: d }])
+  const d = new Date();
+  setTodos([...todos,{id:Date.now(), todo, date: d, isCompleted:false}])
   setTodo("")
 }
 
@@ -41,7 +42,7 @@ if(todo) {
 
       </main>
 
-      <footer className="footer">
+      <footer className="footer mt-5">
         <a
         className={styles.github__link}
           href="https://github.com/eheath30"

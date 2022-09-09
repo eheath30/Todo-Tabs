@@ -1,7 +1,6 @@
 import React from "react";
-import { Todo } from "../taskModel";
+import { Todo } from "../../lib/taskModel";
 import styles from "../../styles/todo.module.css";
-import TodoList from "./TodoList";
 
 
 type Props = {
@@ -16,7 +15,7 @@ const TodoItem = ({ todo, todos, setTodos }: Props) => {
  const handleCompleted = (id: number) => {
   setTodos(
     todos.map((todo) =>
-      todo.id === id ? {...todo, isCompleted: !TodoList.isCompleted}: todo))
+      todo.id === id ? {...todo, isCompleted: !todo.isCompleted}: todo))
  }
 
 
