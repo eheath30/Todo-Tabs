@@ -1,0 +1,41 @@
+.todo__item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 30%;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 15px;
+    background-image: url("https://jooinn.com/images/crumpled-paper-texture-13.jpg");
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.todo__itemtext {
+    flex: 1;
+    padding: 5px;
+    border: none;
+    font-size: 20px;
+}
+
+.icon {
+    margin: 5px;
+    font-size: 25px;
+    cursor:pointer;
+}
+
+.icon:hover {
+    color: orange;
+}
+
+.icon__list {
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (max-width: 700px) {
+    .todo__item {
+        width: 95%;
+        margin-left: 20px;
+    }
+}
