@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../../styles/list.module.css";
-import TodoItem from '../components/Todo'
-import {Todo} from '../../lib/taskModel'
+import styles from "../styles/list.module.css"
+import TodoItem from './Todo'
+import {Todo} from '../lib/taskModel'
 
 
 interface Props {
@@ -14,7 +14,7 @@ const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
     <div className={styles.container}>
 
 
-        {todos.map((todo) => (
+        {todos?.map((todo) => (
                 <TodoItem
                 todo={todo}
                 key={todo.id}

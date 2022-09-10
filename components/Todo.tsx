@@ -1,6 +1,6 @@
 import React from "react";
-import { Todo } from "../../lib/taskModel";
-import styles from "../../styles/todo.module.css";
+import { Todo } from "../lib/taskModel";
+import styles from "../styles/todo.module.css";
 
 
 type Props = {
@@ -9,12 +9,12 @@ type Props = {
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 };
 
-const TodoItem = ({ todo, todos, setTodos }: Props) => {
+const TodoItem: React.FC<Props> = ({ todo, todos, setTodos }) => {
 
 
  const handleCompleted = (id: number) => {
   setTodos(
-    todos.map((todo) =>
+    todos?.map((todo) =>
       todo.id === id ? {...todo, isCompleted: !todo.isCompleted}: todo))
  }
 
