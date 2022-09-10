@@ -11,10 +11,10 @@
 - run: `npm run dev`
 
 ## Todo
-- Resolve build errors
 - Create full CRUD capability
 - Create multiple columns
 - Create drag & drop capabilities
+- Undo last Delete button
 - Add Local Storage
 - Deploy as chrome extension
 

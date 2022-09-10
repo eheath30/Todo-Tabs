@@ -43,6 +43,7 @@ if(todo) {
       </main>
 
       <footer className="footer mt-5">
+
         <a
         className={styles.github__link}
           href="https://github.com/eheath30"
@@ -55,6 +56,7 @@ if(todo) {
 
         </a>
       </footer>
+
     </div>
   )
 }
