@@ -1,6 +1,13 @@
 # Todo Tabs
 #### A simple Todo list created using NextJS, ReactJS & TypeScript.
 
+## Functionality
+####Todo Tabs:
+- Add new todos, creating a tab for that todo.
+- Drag & drop to sort todos according to active tasks, completed tasks and backlog.
+- Edit, delete or mark todos as completed within their tab.
+- Access a todos modal to add a description for that todo.
+
 ## Installation & Usage
 ### Installation
 - cd into `Todo-Tabs`
@@ -11,13 +18,12 @@
 - run: `npm run dev`
 
 ## Todo
-- Create full CRUD capability
-- Create multiple columns
-- Create drag & drop capabilities
-- Undo last Delete button
-- Add Local Storage
+- Local Storage
 - Deploy as chrome extension
 
+## Stretch
+- Create functionality for custom columns.
+- Undo button || Warning on delete
 
 ## Software & Plans
 - This project has been built using NextJS, Vercel, ReactJS & TypeScript.

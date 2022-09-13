@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 30%;
     border-radius: 5px;
     padding: 20px;
     margin-top: 15px;
@@ -39,3 +38,25 @@
         margin-left: 20px;
     }
 }
+
+.drag {
+    box-shadow: 0 0 20px black;
+  }
+
+
+  .inside__todo__modal {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .todo__modal__item {
+    padding: 5px;
+    margin: 5px;
+  }
+
+
+  .modal__button {
+    width: 50%;
+    align-self: center
+  }

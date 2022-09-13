@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Todo } from "../lib/taskModel";
 import styles from "../styles/todo.module.css";
+import { Draggable } from "react-beautiful-dnd";
+import Modal from "./modal"
 
 type Props = {
+  index: number;
   todo: Todo;
   todos: Todo[];
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  setTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
 };
 
-const TodoItem: React.FC<Props> = ({ todo, todos, setTodos }) => {
+const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [edit, setEdit] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<string>(todo.todo);
+  const [editDescription, setEditDescription] = useState<boolean>(false);
+  const [editTodoDescription, setEditTodoDescription] = useState<string>(
+    todo.description
+  );
+
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [edit]);
+
 
   const handleCompleted = (id: number) => {
     setTodos(
@@ -29,22 +44,45 @@ const TodoItem: React.FC<Props> = ({ todo, todos, setTodos }) => {
     e.preventDefault();
 
     setTodos(
-      todos?.map((todo) =>
+      todos.map((todo) =>
         todo.id===id?{...todo, todo: editTodo}:todo
     ))
     setEdit(false)
   }
 
+
+  const handleEditDescription = (e: React.FormEvent, id: number) => {
+    e.preventDefault();
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, description: editTodoDescription } : todo
+      )
+    );
+    setEdit(false);
+  };
+
   return (
-    <form className={styles.todo__item} onSubmit={(e) => handleEdit(e, todo.id)}>
+    <>
+    <Draggable draggableId={todo.id.toString()} index={index}>
+      {(provided, snapshot) => (
+    <form onSubmit={(e) => handleEdit(e, todo.id)}
+    {...provided.draggableProps}
+            {...provided.dragHandleProps}
+            ref={provided.innerRef}
+            className={`${styles.todo__item} ${snapshot.isDragging ? styles.drag : ""}`}
+    >
       <div>
         {edit ? (
+          <>
           <input
             value={editTodo}
             onChange={(e) => {
               setEditTodo(e.target.value);
             }}
-          />
+            className={styles.todo__itemtext}
+                ref={inputRef}
+          /><button>Submit</button>
+          </>
         ) : todo.isCompleted ? (
           <s className={styles.todo__itemtext}>{todo.todo} </s>
         ) : (
@@ -107,7 +145,76 @@ const TodoItem: React.FC<Props> = ({ todo, todos, setTodos }) => {
           </svg>
         </span>
       </div>
+      <button className={styles.modal__button} onClick={() => setIsOpen(true)}>More</button>
     </form>
+    )}
+    </Draggable>
+
+    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+    <div className="todomodal">
+      <section className={styles.inside__todo__modal}>
+        <span className={styles.todo__modal__item}>Title: {todo.todo}</span>
+        <span className={styles.todo__modal__item}>Date added: N.A</span>
+        <span className={styles.todo__modal__item}>Description:</span>
+        <form onSubmit={(e) => handleEditDescription(e, todo.id)}>
+        {editDescription ? (
+          <>
+          <input
+            value={editTodoDescription}
+            onChange={(e) => setEditTodoDescription(e.target.value)}
+            className={styles.todo__singledescription}
+            ref={inputRef}
+          />
+          <button
+          className="icon"
+          onClick={() => {
+
+              setEditDescription(!editDescription);
+
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="w-5 h-5"
+            style={{ width: "25px", height: "25px" }}
+          >
+            <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
+            <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
+          </svg>
+        </button>
+        </>
+        ) : (
+          <>
+          <span>{todo.description}</span>
+          <button
+          className="icon"
+          onClick={() => {
+
+              setEditDescription(!editDescription);
+
+          }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="w-5 h-5"
+            style={{ width: "25px", height: "25px" }}
+          >
+            <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
+            <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
+          </svg>
+        </button>
+        </>
+        )}
+        </form>
+
+      </section>
+    </div>
+  </Modal>
+  </>
   );
 };
 

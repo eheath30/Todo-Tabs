@@ -1,9 +1,29 @@
 
-.input {
-    display: flex;
-    width: 90%;
-    position: relative;
-    align-items: center;
+
+
+@media only screen and (min-width: 768px) {
+    .input {
+        display: flex;
+        width: 60%;
+        position: relative;
+        align-items: center;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .input {
+        display: flex;
+        width: 90%;
+        position: relative;
+        align-items: center;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .input {
+        display: flex;
+        width: 40%;
+        position: relative;
+        align-items: center;
+    }
 }
 
 .input__box {
