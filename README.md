@@ -18,12 +18,17 @@
 - run: `npm run dev`
 
 ## Todo
+- Undo button || Warning on delete
 - Local Storage
 - Deploy as chrome extension
+##### edits
+- remove redundant complete btn
+- responsiveness for mobile devices
+
 
 ## Stretch
 - Create functionality for custom columns.
-- Undo button || Warning on delete
+
 
 ## Software & Plans
 - This project has been built using NextJS, Vercel, ReactJS & TypeScript.
