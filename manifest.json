@@ -1,0 +1,13 @@
+{
+
+    "manifest_version": 3,
+    "name": "My Extension 222",
+    "version": "versionString",
+
+
+    "background": {
+
+      "service_worker": "background.js"
+
+  }
+}

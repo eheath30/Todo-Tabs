@@ -1,19 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import type { NextPage } from 'next'
 import Head from 'next/head'
-// import Image from 'next/image'
+import createPersistedState from 'use-persisted-state';
 import styles from '../styles/Home.module.css'
 import InputField from '../components/InputField'
 import {Todo} from '../lib/taskModel';
 import TodoList from '../components/TodoList';
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import ClientOnly from '../components/ClientOnly';
+
+const useTodosState = createPersistedState('todos');
+const useCompletedTodosState = createPersistedState('completedtodos');
+const useBacklogTodosState = createPersistedState('backlogtodos');
+
+
 
 
 const Home: NextPage = () => {
 const [todo, setTodo] = useState<string>("");
-const [todos, setTodos] = useState<Array<Todo>>([]);
-const [CompletedTodos, setCompletedTodos] = useState<Array<Todo>>([]);
-const [BacklogTodos, setBacklogTodos] = useState<Array<Todo>>([]);
+const [todos, setTodos] = useTodosState<Array<Todo>>([]);
+const [CompletedTodos, setCompletedTodos] = useCompletedTodosState<Array<Todo>>([]);
+const [BacklogTodos, setBacklogTodos] = useBacklogTodosState<Array<Todo>>([]);
 
 const handleNewTask = (e: React.FormEvent) => {
 e.preventDefault();
@@ -74,8 +81,15 @@ const onDragEnd = (result: DropResult) => {
 };
 
 
-  return (
+  // saving data to local storage
+  useEffect(()=>{
+    localStorage.setItem('todos',JSON.stringify(todos));
+  },[todos])
 
+
+
+  return (
+<ClientOnly>
     <div className={styles.container}>
       <Head>
         <title>Next Todo List</title>
@@ -118,7 +132,7 @@ const onDragEnd = (result: DropResult) => {
       </footer>
       <div id="portal"></div>
     </div>
-
+    </ClientOnly>
   )
 }
 

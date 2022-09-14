@@ -32,12 +32,6 @@
 }
 
 
-@media (max-width: 700px) {
-    .todo__item {
-        width: 95%;
-        margin-left: 20px;
-    }
-}
 
 .drag {
     box-shadow: 0 0 20px black;
@@ -57,6 +51,18 @@
 
 
   .modal__button {
-    width: 50%;
+    width: 30%;
     align-self: center
+  }
+
+  .icons__and__modal__btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .todo__item__date {
+    display: flex;
+    align-self: flex-end;
   }
