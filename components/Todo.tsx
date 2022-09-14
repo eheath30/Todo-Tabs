@@ -19,9 +19,7 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
   const [editTodoDescription, setEditTodoDescription] = useState<string>(
     todo.description
   );
-  const date = todo.date.toString().split("T");
-  date.pop();
-
+  let currentDate = todo.date.toString()
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     inputRef.current?.focus();
@@ -72,7 +70,7 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
             }`}
           >
             {" "}
-            <sup className={styles.todo__item__date}>{date}</sup>
+            <sup className={styles.todo__item__date}>{currentDate}</sup>
             <div>
               {edit ? (
                 <>

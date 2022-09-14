@@ -26,6 +26,9 @@
 - responsiveness for mobile devices
 
 
+## Bugs
+- Failing at deployment possibly due to type or code issues.
+
 ## Stretch
 - Create functionality for custom columns.
 

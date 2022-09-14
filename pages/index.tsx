@@ -18,18 +18,20 @@ const useBacklogTodosState = createPersistedState('backlogtodos');
 
 const Home: NextPage = () => {
 const [todo, setTodo] = useState<string>("");
-const [todos, setTodos] = useTodosState<Array<Todo>>([]);
-const [CompletedTodos, setCompletedTodos] = useCompletedTodosState<Array<Todo>>([]);
-const [BacklogTodos, setBacklogTodos] = useBacklogTodosState<Array<Todo>>([]);
+const [todos, setTodos] = useTodosState([]);
+const [CompletedTodos, setCompletedTodos] = useCompletedTodosState([]);
+const [BacklogTodos, setBacklogTodos] = useBacklogTodosState([]);
 
 const handleNewTask = (e: React.FormEvent) => {
 e.preventDefault();
 
 
-if(todo) {
-  const d = new Date();
+if(todo && todos) {
+  console.log(todos)
+  const d = new Date().toLocaleString();
   setTodos([...todos,{id:Date.now(), todo, date: d, isCompleted:false, description: "" }])
   setTodo("")
+
 }
 
 };
