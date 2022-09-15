@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
-import createPersistedState from "use-persisted-state";
 import styles from "../styles/Home.module.css";
 import InputField from "../components/InputField";
 import { Todo } from "../lib/taskModel";
@@ -9,9 +8,6 @@ import TodoList from "../components/TodoList";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import ClientOnly from "../components/ClientOnly";
 
-// const useTodosState = createPersistedState("todos");
-// const useCompletedTodosState = createPersistedState("completedtodos");
-// const useBacklogTodosState = createPersistedState("backlogtodos");
 
 const getToDos = () => {
   if (typeof window !== 'undefined') {
@@ -36,7 +32,7 @@ const Home: NextPage = () => {
   const [todos, setTodos] = useState<Array<Todo>>(getToDos());
   const [CompletedTodos, setCompletedTodos] = useState<Array<Todo>>(getCompletedToDos());
   const [BacklogTodos, setBacklogTodos] = useState<Array<Todo>>(getBacklogToDos());
-  const [focusTodo, setFocusTodo] = useState<Array<Todo>>([]);
+
 
 
 
@@ -112,8 +108,9 @@ const Home: NextPage = () => {
 
       <div className={styles.container}>
         <Head>
-          <title>Next Todo List</title>
-          <meta name="description" content="NextJS todo list" />
+          <title>Next Todo Tabs</title>
+          <meta name="description" content="NextJS todo tabs" />
+          <meta name="author" content="Elliot Heath" />
           <link
             rel="icon"
             href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏱</text></svg>"
@@ -129,7 +126,7 @@ const Home: NextPage = () => {
         <DragDropContext onDragEnd={onDragEnd}>
           <main className="container d-flex flex-column align-items-center">
             <div className={styles.special__title}>
-              <h1 className="display-2 my-5">
+              <h1 className="display-3 my-4">
                 Next<sub className={styles.special__title__sup}>JS</sub>⠀Todo
                 Tabs
               </h1>
@@ -146,7 +143,6 @@ const Home: NextPage = () => {
               setCompletedTodos={setCompletedTodos}
               BacklogTodos={BacklogTodos}
               setBacklogTodos={setBacklogTodos}
-              setFocusTodo={setFocusTodo}
             />
           </main>
         </DragDropContext>

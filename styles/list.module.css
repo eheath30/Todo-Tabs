@@ -12,9 +12,10 @@
   flex-direction: column;
   width: 32%;
   padding: 15px;
-  background-color: rgb(18, 61, 65);
-  min-height: 20vh;
+  background-color: #BAA3A9;
+  min-height: 13rem;
 }
+
 
 @media only screen and (max-width: 768px) {
   .container {
@@ -33,41 +34,49 @@
     width: 90%;
     padding: 15px;
     margin-top: 1rem;
-    background-color: rgb(18, 61, 65);
-    min-height: 20vh;
+    background-color: #BAA3A9;
+    min-height: 13rem;
   }
 }
 
 .dragactive {
-  background-color: rgb(0, 221, 236);
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  background-color: #87CEEB;
+  box-shadow: #072A6C 0px 1px 4px, #072A6C 0px 0px 0px 3px;
 }
 
-.dragcomplete {
-  background-color: rgb(255, 38, 0);
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-}
-
-.dragbacklog {
-  background-color: rgb(51, 123, 133);
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
-}
-
-.remove {
-  background-color: rgb(80, 90, 235);
-  min-height: 20vh;
-}
-
-.backlog {
-  background-color: rgb(118, 160, 52);
-  min-height: 20vh;
-}
-
-.todos__heading {
+.headingnormal {
   font-size: 30px;
   /* text-align: center; */
   color: white;
 }
+
+.headingactive {
+  font-size: 30px;
+  color: #072A6C;
+}
+
+
+.dragcomplete {
+  background-color: #E7DBCC;
+  box-shadow: #072A6C 0px 1px 4px, #072A6C 0px 0px 0px 3px;
+}
+
+.dragbacklog {
+  background-color: #D2D2CF;
+  box-shadow: #072A6C 0px 1px 4px, #072A6C 0px 0px 0px 3px;
+}
+
+.remove {
+  background-color: #C8A2C8;
+  min-height: 13rem;
+}
+
+.backlog {
+  background-color: #6B6E6F;
+  min-height: 13rem;
+}
+
+
 
 .todos__single {
   display: flex;
@@ -87,13 +96,13 @@
   transform: scale(1.03);
 }
 
-.todos__single--text {
+.todos__singletext {
   flex: 1;
   padding: 5px;
   border: none;
   font-size: 20px;
 }
 
-.todos__single--text:focus {
+.todos__singletext:focus {
   outline: none;
 }

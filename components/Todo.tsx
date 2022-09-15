@@ -9,10 +9,9 @@ type Props = {
   todo: Todo;
   todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
-  setFocusTodo: React.Dispatch<React.SetStateAction<Array<Todo>>>;
 };
 
-const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos, setFocusTodo }) => {
+const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [edit, setEdit] = useState<boolean>(false);
   const [editTodo, setEditTodo] = useState<string>(todo.todo);

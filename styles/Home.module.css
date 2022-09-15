@@ -8,23 +8,24 @@
 
 }
 
-
-
-
 .github__link {
   cursor: help;
-}
-
-
-.special__title {
-  background-image: url("https://www.geza.co.za/wp-content/uploads/2018/05/Water-BG.jpg");
+  background-image: url("https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616_960_720.jpg");
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent
 }
 
+
+.special__title {
+  background-image: url("https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616_960_720.jpg");
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 .special__title__sup {
-  background-image: url("https://www.geza.co.za/wp-content/uploads/2018/05/Water-BG.jpg");
+  background-image: url("https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616_960_720.jpg");
   background-clip: text;
   -webkit-background-clip: text;
   font-size: 2rem;
