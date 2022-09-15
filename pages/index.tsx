@@ -18,9 +18,9 @@ const useBacklogTodosState = createPersistedState('backlogtodos');
 
 const Home: NextPage = () => {
 const [todo, setTodo] = useState<string>("");
-const [todos, setTodos] = useTodosState([]);
-const [CompletedTodos, setCompletedTodos] = useCompletedTodosState([]);
-const [BacklogTodos, setBacklogTodos] = useBacklogTodosState([]);
+const [todos, setTodos] = useState<Array<Todo>>([]);
+const [CompletedTodos, setCompletedTodos] = useState<Array<Todo>>([]);
+const [BacklogTodos, setBacklogTodos] = useState<Array<Todo>>([]);
 
 const handleNewTask = (e: React.FormEvent) => {
 e.preventDefault();

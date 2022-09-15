@@ -19,7 +19,14 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
   const [editTodoDescription, setEditTodoDescription] = useState<string>(
     todo.description
   );
-  let currentDate = todo.date.toString()
+
+  function currentDate() {
+    let currentDate: string
+    if (todo.date !== undefined) {
+    return currentDate = todo.date.toString();
+  }
+
+}
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
     inputRef.current?.focus();
@@ -41,7 +48,7 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
     e.preventDefault();
 
     setTodos(
-      todos.map((todo) => (todo.id === id ? { ...todo, todo: editTodo } : todo))
+      todos?.map((todo) => (todo.id === id ? { ...todo, todo: editTodo } : todo))
     );
     setEdit(false);
   };
@@ -50,14 +57,17 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
     e.preventDefault();
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, description: editTodoDescription } : todo
+        todo?.id === id ? { ...todo, description: editTodoDescription } : todo
       )
     );
     setEdit(false);
   };
 
+  console.log(todo.id)
+
   return (
     <>
+    { todo.id !== undefined &&
       <Draggable draggableId={todo.id.toString()} index={index}>
         {(provided, snapshot) => (
           <form
@@ -70,7 +80,7 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
             }`}
           >
             {" "}
-            <sup className={styles.todo__item__date}>{currentDate}</sup>
+            <sup className={styles.todo__item__date}>{currentDate()}</sup>
             <div>
               {edit ? (
                 <>
@@ -158,16 +168,19 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
           </form>
         )}
       </Draggable>
+      }
 
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <div className="todomodal">
           <section className={styles.inside__todo__modal}>
-            <span className={styles.todo__modal__item}>Title: {todo.todo}</span>
-            <span className={styles.todo__modal__item}>Date added: N.A</span>
-            <span className={styles.todo__modal__item}>Description:</span>
+            <div className={styles.todo__modal__item}>
+            <span><strong>Title:</strong> {todo.todo}</span>
+            <span>{currentDate()}</span>
+            </div>
+            <span><strong>Description:</strong></span>
             <form onSubmit={(e) => handleEditDescription(e, todo.id)}>
               {editDescription ? (
-                <>
+                <div className={styles.description__and__button}>
                   <input
                     value={editTodoDescription}
                     onChange={(e) => setEditTodoDescription(e.target.value)}
@@ -175,7 +188,7 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
                     ref={inputRef}
                   />
                   <button
-                    className="icon"
+                    className={styles.description__button}
                     onClick={() => {
                       setEditDescription(!editDescription);
                     }}
@@ -191,12 +204,12 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
                       <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
                     </svg>
                   </button>
-                </>
+                </div>
               ) : (
-                <>
-                  <span>{todo.description}</span>
+                <div className={styles.description__and__button}>
+                  <span className={styles.description}>{todo.description}{!todo.description && "Add a description"}</span>
                   <button
-                    className="icon"
+                    className={styles.description__button}
                     onClick={() => {
                       setEditDescription(!editDescription);
                     }}
@@ -212,7 +225,7 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
                       <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
                     </svg>
                   </button>
-                </>
+                </div>
               )}
             </form>
           </section>

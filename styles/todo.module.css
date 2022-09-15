@@ -47,6 +47,8 @@
   .todo__modal__item {
     padding: 5px;
     margin: 5px;
+    border: 1PX solid black;
+    border-radius: 5px;;
   }
 
 
@@ -66,3 +68,21 @@
     display: flex;
     align-self: flex-end;
   }
+
+
+  .description {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+  }
+  .description__and__button {
+    display: flex;
+    flex-direction: column;
+  }
+
+.description__button {
+    width: 2.5em;
+    border-radius: 5px;
+    align-self: center;
+}

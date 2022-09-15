@@ -27,7 +27,7 @@
 
 
 ## Bugs
-- Failing at deployment possibly due to type or code issues.
+- Failing at deployment possibly due to type or code issues => Update: Due to local-storage bug.
 
 ## Stretch
 - Create functionality for custom columns.
