@@ -175,7 +175,10 @@ const TodoItem: React.FC<Props> = ({ index, todo, todos, setTodos }) => {
           <section className={styles.inside__todo__modal}>
             <div className={styles.todo__modal__item}>
             <span><strong>Title:</strong> {todo.todo}</span>
-            <span>{currentDate()}</span>
+
+            </div>
+            <div className={styles.todo__modal__item}>
+            <span><strong>Added:</strong> {currentDate()}</span>
             </div>
             <span><strong>Description:</strong></span>
             <form onSubmit={(e) => handleEditDescription(e, todo.id)}>
