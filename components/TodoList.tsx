@@ -1,9 +1,8 @@
 import React from "react";
-import styles from "../styles/list.module.css"
-import TodoItem from './Todo'
-import {Todo} from '../lib/taskModel'
+import styles from "../styles/list.module.css";
+import TodoItem from "./Todo";
+import { Todo } from "../lib/taskModel";
 import { Droppable } from "react-beautiful-dnd";
-
 
 interface Props {
   todos: Array<Todo>;
@@ -12,20 +11,26 @@ interface Props {
   CompletedTodos: Array<Todo>;
   setBacklogTodos: React.Dispatch<React.SetStateAction<Array<Todo>>>;
   BacklogTodos: Array<Todo>;
+  setFocusTodo: React.Dispatch<React.SetStateAction<Array<Todo>>>;
 }
 
-const TodoList: React.FC<Props> = ({ todos,
+const TodoList: React.FC<Props> = ({
+  todos,
   setTodos,
   CompletedTodos,
   setCompletedTodos,
   BacklogTodos,
-  setBacklogTodos, }) => {
+  setBacklogTodos,
+  setFocusTodo,
+}) => {
   return (
     <div className={styles.container}>
-<Droppable droppableId="TodosList">
+      <Droppable droppableId="TodosList">
         {(provided, snapshot) => (
           <div
-            className={`${styles.todos} ${snapshot.isDraggingOver ? styles.dragactive : ""}`}
+            className={`${styles.todos} ${
+              snapshot.isDraggingOver ? styles.dragactive : ""
+            }`}
             ref={provided.innerRef}
             {...provided.droppableProps}
           >
@@ -37,6 +42,7 @@ const TodoList: React.FC<Props> = ({ todos,
                 todo={todo}
                 key={todo.id}
                 setTodos={setTodos}
+                setFocusTodo={setFocusTodo}
               />
             ))}
             {provided.placeholder}
@@ -60,6 +66,7 @@ const TodoList: React.FC<Props> = ({ todos,
                 todo={todo}
                 key={todo.id}
                 setTodos={setCompletedTodos}
+                setFocusTodo={setFocusTodo}
               />
             ))}
             {provided.placeholder}
@@ -68,13 +75,13 @@ const TodoList: React.FC<Props> = ({ todos,
       </Droppable>
       <Droppable droppableId="TodosBacklog">
         {(provided, snapshot) => (
-           <div
-           ref={provided.innerRef}
-           {...provided.droppableProps}
-           className={`${styles.todos}  ${
-             snapshot.isDraggingOver ? styles.dragbacklog : styles.backlog
-           }`}
-         >
+          <div
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            className={`${styles.todos}  ${
+              snapshot.isDraggingOver ? styles.dragbacklog : styles.backlog
+            }`}
+          >
             <span className={styles.todos__heading}>Backlog</span>
             {BacklogTodos?.map((todo, index) => (
               <TodoItem
@@ -83,17 +90,13 @@ const TodoList: React.FC<Props> = ({ todos,
                 todo={todo}
                 key={todo.id}
                 setTodos={setBacklogTodos}
+                setFocusTodo={setFocusTodo}
               />
             ))}
             {provided.placeholder}
           </div>
         )}
       </Droppable>
-
-
-
-
-
 
       {/* <Droppable droppableId="TodosList">
         {(provided, snapshot) => (

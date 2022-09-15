@@ -1,88 +1,82 @@
 .todo__item {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    border-radius: 5px;
-    padding: 20px;
-    margin-top: 15px;
-    background-image: url("https://jooinn.com/images/crumpled-paper-texture-13.jpg");
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 15px;
+  background-image: url("https://jooinn.com/images/crumpled-paper-texture-13.jpg");
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .todo__itemtext {
-    flex: 1;
-    padding: 5px;
-    border: none;
-    font-size: 20px;
+  flex: 1;
+  padding: 5px;
+  border: none;
+  font-size: 20px;
 }
 
 .icon {
-    margin: 5px;
-    font-size: 25px;
-    cursor:pointer;
+  margin: 5px;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 .icon:hover {
-    color: orange;
+  color: orange;
 }
 
 .icon__list {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-
-
 .drag {
-    box-shadow: 0 0 20px black;
-  }
+  box-shadow: 0 0 20px black;
+}
 
+.inside__todo__modal {
+  display: flex;
+  flex-direction: column;
+}
 
-  .inside__todo__modal {
-    display: flex;
-    flex-direction: column;
-  }
+.todo__modal__item {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
 
+.modal__button {
+  width: 30%;
+  align-self: center;
+}
 
-  .todo__modal__item {
-    padding: 5px;
-    margin: 5px;
-    border: 1PX solid black;
-    border-radius: 5px;;
-  }
+.icons__and__modal__btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 
+.todo__item__date {
+  display: flex;
+  align-self: flex-end;
+}
 
-  .modal__button {
-    width: 30%;
-    align-self: center
-  }
-
-  .icons__and__modal__btns {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-
-  .todo__item__date {
-    display: flex;
-    align-self: flex-end;
-  }
-
-
-  .description {
-    border: 1px solid black;
-    border-radius: 5px;
-    margin: 5px;
-    padding: 5px;
-  }
-  .description__and__button {
-    display: flex;
-    flex-direction: column;
-  }
+.description {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+}
+.description__and__button {
+  display: flex;
+  flex-direction: column;
+}
 
 .description__button {
-    width: 2.5em;
-    border-radius: 5px;
-    align-self: center;
+  width: 2.5em;
+  border-radius: 5px;
+  align-self: center;
 }
