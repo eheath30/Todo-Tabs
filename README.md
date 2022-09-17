@@ -1,6 +1,6 @@
 # Todo Tabs
 #### A simple Todo list created using NextJS, ReactJS & TypeScript.
-Live site: ```https://todotabs.netlify.app/```
+Live site: https://todotabs.netlify.app/
 
 ## Functionality
 ####Todo Tabs:
