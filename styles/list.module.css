@@ -17,6 +17,18 @@
 }
 
 
+.remove {
+  background-color: #C8A2C8;
+  min-height: 13rem;
+}
+
+.backlog {
+  background-color: #6B6E6F;
+  min-height: 13rem;
+}
+
+
+
 @media only screen and (max-width: 768px) {
   .container {
     width: 95%;
@@ -35,8 +47,19 @@
     padding: 15px;
     margin-top: 1rem;
     background-color: #BAA3A9;
-    min-height: 13rem;
+    min-height: 6.5rem;
   }
+
+  .remove {
+    background-color: #C8A2C8;
+    min-height: 6.5rem;
+  }
+
+  .backlog {
+    background-color: #6B6E6F;
+    min-height: 6.5rem;
+  }
+
 }
 
 .dragactive {
@@ -64,16 +87,6 @@
 .dragbacklog {
   background-color: #D2D2CF;
   box-shadow: #072A6C 0px 1px 4px, #072A6C 0px 0px 0px 3px;
-}
-
-.remove {
-  background-color: #C8A2C8;
-  min-height: 13rem;
-}
-
-.backlog {
-  background-color: #6B6E6F;
-  min-height: 13rem;
 }
 
 

@@ -1,33 +1,61 @@
 .container {
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: column;
-
     text-align: center;
-    padding-right: 15px;
-
 }
 
-.github__link {
-  cursor: help;
-  background-image: url("https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616_960_720.jpg");
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent
-}
 
+@media (prefers-color-scheme: light) {
 
 .special__title {
-  background-image: url("https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616_960_720.jpg");
+  background-image: url("../imgs/stars.jpg");
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .special__title__sup {
-  background-image: url("https://cdn.pixabay.com/photo/2016/11/25/23/15/moon-1859616_960_720.jpg");
+  background-image: url("../imgs/stars.jpg");
   background-clip: text;
   -webkit-background-clip: text;
   font-size: 2rem;
   color: transparent
 }
+
+
+.github__link {
+  background-image: url("../imgs/stars.jpg");
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent
+}
+
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .special__title {
+    background-image: url("../imgs/sky.jpg");
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .special__title__sup {
+    background-image: url("../imgs/sky.jpg");
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 2rem;
+    color: transparent
+  }
+
+
+  .github__link {
+    background-image: url("../imgs/sky.jpg");
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent
+  }
+
+  }

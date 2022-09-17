@@ -1,3 +1,5 @@
+
+
 html,
 body {
   padding: 0;
@@ -16,22 +18,27 @@ a {
     color-scheme: dark;
   }
   body {
-    color: rgb(211, 191, 191);
-    background: black;
+    background-image: url("../imgs/stars.jpg");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
   }
 }
 
 @media (prefers-color-scheme: light) {
   html {
-    color-scheme: dark;
+    color-scheme: light;
   }
-  body {
-    color: rgb(63, 57, 57);
-    background-image: url("https://cdn.pixabay.com/photo/2016/04/15/04/02/water-1330252_960_720.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 100vh;
+body {
+  color: rgb(63, 57, 57);
+  background-image: url("../imgs/sky.jpg");
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
 
-  }
+}
+
+
 }
